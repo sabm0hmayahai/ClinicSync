@@ -37,7 +37,7 @@ def predict():
 @app.route('/pneumonia')
 def pneumonia():
     # make this an API endpoint
-
+    print("API endpoint reached")
 
 @app.route('/')
 @app.route('/home')
@@ -48,3 +48,4 @@ def home():
 @app.route('/disease2')
 def disease2():
     # make this an API endpoint
+    print("reached second disease")
