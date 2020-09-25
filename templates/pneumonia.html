@@ -1,0 +1,34 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="main">
+  <div align="center" class="container">
+    <h1>Pnuemonia detector</h1>
+    <p class="text-monospace">Tagline here</p>
+    <hr class="my-4">
+    <div class="panel">
+      <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
+      <label for="file-upload" id="file-drag" class="upload-box">
+        <i class="fa fa-upload"></i>
+        <div id="upload-caption">Drop your chest X-ray here or select image</div>
+        <img id="image-preview" class="hidden" />
+      </label>
+    </div>
+    <div style="margin-bottom: 2rem;">
+      <input type="button" value="Submit" class="btn btn-primary btn-lg active" onclick="submitImage();" />
+      <input type="button" value="Clear" class="btn btn-primary btn-lg active" onclick="clearImage();" />
+    </div>
+
+    <div id="image-box">
+
+      <img id="image-display" />
+      <center>
+      <div id="pred-result" class="hidden"></div>
+      <svg id="loader" class="hidden" viewBox="0 0 32 32" width="32" height="32">
+        <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+      </svg>
+      </center>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
