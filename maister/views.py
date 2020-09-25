@@ -1,7 +1,7 @@
 from flask import url_for, request, render_template, Response, jsonify, redirect
-from clinicsync import app,model_predict,model
+from maister import app,model_predict,model
 import numpy as np
-from clinicsync.util import base64_to_pil
+from maister.util import base64_to_pil
 from datetime import datetime
 
 @app.route('/predict', methods=['GET', 'POST'])
@@ -36,16 +36,26 @@ def predict():
 
 @app.route('/pneumonia')
 def pneumonia():
-    # make this an API endpoint
-    print("API endpoint reached")
+    return render_template('pneumonia.html', title='Pneumonia', year=datetime.now().year)
 
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('home.html',title='Home',year=datetime.now().year)
 
+@app.route('/contact')
+def contact():
+    """Renders the contact page."""
+    return render_template('contact.html',title='Contact',year=datetime.now().year,message='Your contact page.')
+
+
+@app.route('/about')
+def about():
+    """Renders the about page."""
+    return render_template('about.html',title='About',year=datetime.now().year,message='Your application description page.')
+
+# Add backend stuff for new diseases from here :
 
 @app.route('/disease2')
 def disease2():
-    # make this an API endpoint
-    print("reached second disease")
+    return render_template('disease2.html', title='Disease2', year=datetime.now().year,message='Add disease 2  stuff here...')

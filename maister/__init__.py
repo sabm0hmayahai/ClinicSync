@@ -13,12 +13,12 @@ import numpy as np
 # You can use pretrained model from Keras
 # Check https://keras.io/applications/
 # load json and create model
-json_file = open('clinicsync/models/pnemonia_model.json', 'r')
+json_file = open('maister/models/model.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 model = model_from_json(loaded_model_json)
 # load weights into new model
-model.load_weights("clinicsync/models/pnemonia_model.h5")
+model.load_weights("maister/models/contentmodel.h5")
 print("Loaded model from disk")
 
 print('Model loaded. Check http://127.0.0.1:5000/')
@@ -50,4 +50,4 @@ def model_predict(img, model):
 
 app = Flask(__name__)
 
-import clinicsync.views
+import maister.views

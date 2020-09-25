@@ -1,9 +1,9 @@
 """
-This script runs the clinicsync API application using a development server.
+This script runs the Maister application using a development server.
 """
 
 from os import environ,system
-from clinicsync import app
+from maister import app
 from gevent.pywsgi import WSGIServer
 
 if __name__ == '__main__':
