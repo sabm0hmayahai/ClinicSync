@@ -3,7 +3,6 @@
 <div class="main">
   <div align="center" class="container">
     <h1>Pnuemonia detector</h1>
-    <p class="text-monospace">Tagline here</p>
     <hr class="my-4">
     <div class="panel">
       <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
@@ -20,9 +19,10 @@
 
     <div id="image-box">
 
-      <img id="image-display" />
+      <img id="image-display" width="400" height="400"/>
       <center>
-      <div id="pred-result" class="hidden"></div>
+      <div id="pred-result" class="hidden">
+      </div>
       <svg id="loader" class="hidden" viewBox="0 0 32 32" width="32" height="32">
         <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
       </svg>

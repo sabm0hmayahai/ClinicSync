@@ -40,11 +40,6 @@ def pneumonia():
     return render_template('pneumonia.html', title='Pneumonia', year=datetime.now().year)
 
 
-@app.route('/scanner')
-def scanner():
-    return render_template('scanner.html', title='Scanner', year=datetime.now().year)
-
-
 @app.route('/')
 @app.route('/home')
 def home():

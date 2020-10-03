@@ -58,22 +58,19 @@ function submitImage() {
   predictImage(imageDisplay.src);
 }
 
+function submitScan() {
+  // action for the submit button
+  console.log("submit");
+
+  // call the predict function of the backend
+  predictImage(imageDisplay.src);
+}
+
 function clearImage() {
-  // reset selected files
-  fileSelect.value = "";
-
-  // remove image sources and hide them
-  imagePreview.src = "";
-  imageDisplay.src = "";
-  predResult.innerHTML = "";
-
   hide(imagePreview);
   hide(imageDisplay);
   hide(loader);
   hide(predResult);
-  show(uploadCaption);
-
-  imageDisplay.classList.remove("loading");
 }
 
 function previewFile(file) {
@@ -121,6 +118,26 @@ function predictImage(image) {
     });
 }
 
+function predictScan(image) {
+  fetch("/scanner", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(image)
+  })
+    .then(resp => {
+      if (resp.ok)
+        resp.json().then(data => {
+          //displayResult(data);
+        });
+    })
+    .catch(err => {
+      console.log("An error occured", err.message);
+      window.alert("Oops! Something went wrong.");
+    });
+}
+
 function displayImage(image, id) {
   // display image on given id <img> element
   let display = document.getElementById(id);
@@ -132,7 +149,14 @@ function displayResult(data) {
   // display the result
   // imageDisplay.classList.remove("loading");
   hide(loader);
-  predResult.innerHTML = data.result;
+  if (data.result == "Normal")
+  {
+    predResult.innerHTML = data.result;  
+  }
+  else
+  {
+    predResult.innerHTML = "Detected Pneumonia" + " <br> Recommended Doctors: <br> Dr. Sinha <br> Ph No. 99 9999 9999 <br> Dr. Mehta's Office <br> Ph No. 99 9999 9999";
+  }
   show(predResult);
 }
 
